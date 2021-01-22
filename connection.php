@@ -1,0 +1,21 @@
+<?php
+/**
+	* Conexión a la base de datos
+	* Autor: Erick Cruz
+	* Sitio Web: https://github.com/ecruz22
+	* Copyright © Macro Show 2020
+*/
+	class Db
+	{
+		private static $instance=NULL;
+		private function __construct(){}
+		private function __clone(){}
+		public static function getConnect(){
+			if (!isset(self::$instance)) {
+				$pdo_options[PDO::ATTR_ERRMODE]=PDO::ERRMODE_EXCEPTION;
+				self::$instance= new PDO('mysql:host=localhost;dbname=db_ms','root','',$pdo_options);
+			}
+			return self::$instance;
+		}
+	}
+?>
